@@ -51,7 +51,8 @@ class Book(models.Model):
         max_length=200
     )
     author = models.ManyToManyField(
-        'Author'
+        'Author',
+        related_name='book'
     )
     publisher = models.ForeignKey(
         'Publisher',
