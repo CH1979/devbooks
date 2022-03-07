@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  {% block title %}<title>Python Library - Библиотека Питониста</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    {% block header %}
+    <nav>
+      <ul>
+        <li>
+          <strong>
+            Python Library
+          </strong>
+        </li>
+      </ul>
+      <ul>
+        <li><a href="">Книги</a></li>
+        <li><a href="">Авторы</a></li>
+        <li><a href="">Издательства</a></li>
+      </ul>
+    </nav>
+    {% endblock %}
+  </header>
+  <!--   -->
+
+  <!-- Main -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

@@ -1,5 +1,16 @@
+import os
+from uuid import uuid4
+
 from django.db import models
 from django.urls import reverse
+
+
+def image_rename(instance, filename):
+    """Переименовывает загружаемые изображения"""
+    _, ext = os.path.splitext(filename)
+    name = uuid4().hex
+    filename = "%s%s" % (name, ext)
+    return os.path.join('images', filename)
 
 
 class Tag(models.Model):
@@ -58,7 +69,7 @@ class Book(models.Model):
         unique=True,
         help_text='13 символов '
         '<a href="https://www.isbn-international.org/content/what-isbn">'
-        'ISBN number</a>'
+        'ISBN</a>'
     )
     tag = models.ManyToManyField(
         Tag,
@@ -76,6 +87,7 @@ class Book(models.Model):
         blank=True,
     )
     cover = models.ImageField(
+        upload_to=image_rename,
         null=True,
         blank=True,
     )
@@ -115,6 +127,7 @@ class Author(models.Model):
         blank=True
     )
     picture = models.ImageField(
+        upload_to=image_rename,
         null=True,
         blank=True,
     )

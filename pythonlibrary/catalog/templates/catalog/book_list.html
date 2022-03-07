@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  {% if book_list %}
+  <div>
+    {% for book in book_list %}
+      <div>
+        <figure>
+          <img class="card" src="{{ book.cover.url }}" alt="{{ book.title }}" height="200px">
+        </figure>
+        <a href="">{{ book.title }}</a>
+        {% for author in book.author.all %}
+          {{ author.first_name }} {{ author.last_name }}
+        {% endfor %}
+        {{ book.year }}
+      </div>
+    {% endfor %}
+  </div>
+  {% else %}
+    <p>Каталог книг пуст.</p>
+  {% endif %}
+{% endblock %}
