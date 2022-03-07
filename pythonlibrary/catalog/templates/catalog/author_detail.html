@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div>
+  {% if author.picture %}
+    <figure>
+      <img src="{{ author.picture.url }}" alt="{{ author.first_name }} {{ author.last_name }}">
+    </figure>
+  {% endif %}
+  <h1>{{ author.first_name }} {{ author.last_name }}</h1>
+  {% if author.about %}
+  <h4>Об авторе</h4>
+  <p>{{ author.about }}</p>
+  {% endif %}
+  <h4>Книги</h4>
+  {% for book in author.book.all %}
+    <p><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></p>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -6,9 +6,9 @@
     {% for book in book_list %}
       <div>
         <figure>
-          <img class="card" src="{{ book.cover.url }}" alt="{{ book.title }}" height="200px">
+          <img src="{{ book.cover.url }}" alt="{{ book.title }}">
         </figure>
-        <a href="">{{ book.title }}</a>
+        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
         {% for author in book.author.all %}
           {{ author.first_name }} {{ author.last_name }}
         {% endfor %}

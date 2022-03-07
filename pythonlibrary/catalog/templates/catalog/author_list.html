@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  {% if author_list %}
+  <div>
+    <table>
+      <tr>
+        <th>
+          Автор
+        </th>
+        <th>
+          Книг
+        </th>
+      </tr>
+      {% for author in author_list %}
+      <tr>
+        <td>
+          <a href="{{ author.get_absolute_url }}">{{ author.first_name }} {{ author.last_name }}</a>
+        </td>
+        <td>
+          {{ author.book_count }}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  {% else %}
+    <p>Список авторов пуст.</p>
+  {% endif %}
+{% endblock %}

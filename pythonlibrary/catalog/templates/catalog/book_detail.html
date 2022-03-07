@@ -1,0 +1,26 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div>
+  <figure>
+    <img src="{{ book.cover.url }}" alt="{{ book.title }}">
+  </figure>
+  <h1>{{ book.title }}</h1>
+  {% for author in book.author.all %}
+    <p>
+      <a href="{{ author.get_absolute_url }}">
+      {{ author.first_name }} {{ author.last_name }}
+      </a>
+    </p>
+  {% endfor %}
+  <p>Год издания: {{ book.year }}</p>
+  <p>Издательство: {{ book.publisher }}</p>
+  <p>ISBN: {{ book.isbn }}</p>
+  <p>Язык: {{ book.language }}</p>
+  <p>Страниц: {{ book.num_pages }}</p>
+  <p>{{ book.summary }}</p>
+  {% for tag in book.tag.all %}
+    <p>{{ tag.name }}</p>
+  {% endfor %}
+</div>
+{% endblock %}
