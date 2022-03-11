@@ -1,0 +1,24 @@
+{% load static %}
+
+<div class="column col-2 col-lg-4 col-md-6">
+  <a href="{{ book.get_absolute_url }}">
+    <div>
+      {% if book.cover %}
+      <img src="{{ book.cover.url }}" alt="{{ book.title }}">
+      {% else %}
+      <img src="{% static 'image/no_image.png' %}" alt="{{ book.title }}">
+      {% endif %}
+    </div>
+    <div>
+      {{ book.title }}
+    </div>
+  </a>
+  {% for author in book.author.all %}
+  <div>
+    {{ author.first_name }} {{ author.last_name }}
+  </div>
+  {% endfor %}
+  <div>
+  {{ book.year }}
+  </div>
+</div>

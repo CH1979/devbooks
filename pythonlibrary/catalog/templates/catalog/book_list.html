@@ -1,22 +1,24 @@
 {% extends "base_generic.html" %}
-
 {% block content %}
-  {% if book_list %}
-  <div>
-    {% for book in book_list %}
-      <div>
-        <figure>
-          <img src="{{ book.cover.url }}" alt="{{ book.title }}">
-        </figure>
-        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
-        {% for author in book.author.all %}
-          {{ author.first_name }} {{ author.last_name }}
-        {% endfor %}
-        {{ book.year }}
-      </div>
-    {% endfor %}
-  </div>
-  {% else %}
-    <p>Каталог книг пуст.</p>
-  {% endif %}
+
+<!-- Pagination -->
+{% include "catalog/include/pagination.html" %}
+<!--              -->
+
+<!-- Main content -->
+<div class="columns">
+{% if book_list %}
+  {% for book in book_list %}
+    {% include "catalog/include/book_card.html" %}
+  {% endfor %}
+{% else %}
+  <p>Каталог книг пуст.</p>
+{% endif %}
+</div>
+<!--              -->
+
+<!-- Pagination -->
+{% include "catalog/include/pagination.html" %}
+<!--              -->
+
 {% endblock %}

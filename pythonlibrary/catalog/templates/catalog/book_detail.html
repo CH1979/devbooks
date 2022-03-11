@@ -1,26 +1,33 @@
 {% extends "base_generic.html" %}
+{% load static %}
 
 {% block content %}
-<div>
-  <figure>
+<div class="columns">
+  <div class="column col-3 col-lg-4 col-md-12">
+    {% if book.cover %}
     <img src="{{ book.cover.url }}" alt="{{ book.title }}">
-  </figure>
-  <h1>{{ book.title }}</h1>
-  {% for author in book.author.all %}
-    <p>
-      <a href="{{ author.get_absolute_url }}">
-      {{ author.first_name }} {{ author.last_name }}
-      </a>
-    </p>
-  {% endfor %}
-  <p>Год издания: {{ book.year }}</p>
-  <p>Издательство: {{ book.publisher }}</p>
-  <p>ISBN: {{ book.isbn }}</p>
-  <p>Язык: {{ book.language }}</p>
-  <p>Страниц: {{ book.num_pages }}</p>
-  <p>{{ book.summary }}</p>
-  {% for tag in book.tag.all %}
-    <p>{{ tag.name }}</p>
-  {% endfor %}
+    {% else %}
+    <img src="{% static 'image/no_image.png' %}" alt="{{ book.title }}">
+    {% endif %}
+    <div>Год издания: {{ book.year }}</div>
+    <div>Издательство: {{ book.publisher }}</div>
+    <div>ISBN: {{ book.isbn }}</div>
+    <div>Язык: {{ book.language }}</div>
+    <div>Страниц: {{ book.num_pages }}</div>
+  </div>
+  <div class="column col-9 col-lg-8 col-md-12">
+    <h1>{{ book.title }}</h1>
+    {% for author in book.author.all %}
+      <div>
+        <a href="{{ author.get_absolute_url }}">
+        {{ author.first_name }} {{ author.last_name }}
+        </a>
+      </div>
+    {% endfor %}
+    <blockquote>{{ book.summary }}</blockquote>
+    {% for tag in book.tag.all %}
+      <span>{{ tag.name }}</span>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}

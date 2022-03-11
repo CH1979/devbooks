@@ -1,0 +1,17 @@
+<!-- Pagination -->
+<div class="pagination">
+  <span class="step-links">
+    {% for page_num in page_obj.paginator.page_range %}
+      {% if page_num == page_obj.number %}
+      <span class="page-item active">
+        <a href="?page={{ page_num }}">{{ page_num }}</a>
+      </span>
+      {% else %}
+      <span class="page-item">
+        <a href="?page={{ page_num }}">{{ page_num }}</a>
+      </span>
+      {% endif %}
+    {% endfor %}
+  </span>
+</div>
+<!--              -->

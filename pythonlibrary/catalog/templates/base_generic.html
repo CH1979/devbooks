@@ -4,31 +4,41 @@
   {% block title %}<title>Python Library - Библиотека Питониста</title>{% endblock %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/spectre.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/spectre-exp.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/spectre-icons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    {% block header %}
-    <nav>
-      <ul>
-        <li>
-          <strong>
-            Python Library
-          </strong>
-        </li>
-      </ul>
-      <ul>
-        <li><a href="{% url 'books' %}">Книги</a></li>
-        <li><a href="{% url 'authors' %}">Авторы</a></li>
-      </ul>
-    </nav>
-    {% endblock %}
-  </header>
-  <!--   -->
+  <div class="container grid-xl">
+    <!-- Header -->
+    <header class="columns bg-primary">
+      {% block header %}
+      <nav class="navbar column col-12">
+        <section class="navbar-section">
+          <a class="navbar-brand text-light" href="{% url 'index' %}">
+            <b>Python Library</b>
+          </a>
+        </section>
+        <section class="navbar-section">
+            <a class="btn btn-link text-light" href="{% url 'index' %}">Главная</a>
+            <a class="btn btn-link text-light" href="{% url 'books' %}">Книги</a>
+            <a class="btn btn-link text-light" href="{% url 'authors' %}">Авторы</a>
+          </ul>
+        </section>
+      </nav>
+      {% endblock %}
+    </header>
+    <!--   -->
 
-  <!-- Main -->
-  <main>
-    {% block content %}{% endblock %}
-  </main>
+    <!-- Main -->
+    <main class="columns">
+      <div class="column col-12">
+      {% block content %}{% endblock %}
+      </div>
+    </main>
+    <!--   -->
+  </div>
 </body>
 </html>
