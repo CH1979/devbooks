@@ -22,6 +22,9 @@ class BookAdmin(admin.ModelAdmin):
         'publisher',
         'year'
     )
+    ordering = (
+        'title',
+    )
 
     def display_author(self, object):
         authors = ', '.join(
