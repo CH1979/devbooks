@@ -92,6 +92,9 @@ ENV/
 .spyderproject
 .spyproject
 
+# Secrets
+secrets/
+
 # Rope project settings
 .ropeproject
 
