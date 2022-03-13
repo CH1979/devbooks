@@ -10,7 +10,7 @@
   <h1>{{ author.first_name }} {{ author.last_name }}</h1>
   {% if author.about %}
   <h4>Об авторе</h4>
-  <p>{{ author.about }}</p>
+  <p>{{ author.about|safe }}</p>
   {% endif %}
   <h4>Книги</h4>
   {% for book in author.book.all %}

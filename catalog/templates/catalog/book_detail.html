@@ -24,7 +24,7 @@
         </a>
       </div>
     {% endfor %}
-    <blockquote>{{ book.summary }}</blockquote>
+    <blockquote>{{ book.summary|safe }}</blockquote>
     {% for tag in book.tag.all %}
       <span>{{ tag.name }}</span>
     {% endfor %}
