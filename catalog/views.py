@@ -48,7 +48,7 @@ class BookListView(generic.TemplateView):
         if year is not None:
             try:
                 year = int(year)
-                queryset = queryset.filter(year__exact=int(year))
+                queryset = queryset.filter(year__exact=year)
             except ValueError:
                 raise Http404
         if tag is not None:
