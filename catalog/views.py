@@ -1,4 +1,4 @@
-from django.db.models import Count
+from django.db.models import Q
 from django.shortcuts import render
 from django.views import generic
 
@@ -13,6 +13,21 @@ def index(request):
         'author_list': author_list
     }
     return render(request, 'index.html', context=context)
+
+
+def search(request):
+    query = request.GET.get('q')
+    book_list = Book.objects.filter(
+        Q(title__icontains=query) | Q(summary__icontains=query)
+    )
+    author_list = Author.objects.filter(
+        Q(first_name__icontains=query) | Q(last_name__icontains=query)
+    )
+    context = {
+        'book_list': book_list,
+        'author_list': author_list
+    }
+    return render(request, 'search.html', context=context)
 
 
 class BookListView(generic.ListView):

@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block content %}
+<div class="columns">
+  <!-- Книги -->
+  <div class="column col-12 bg-secondary">
+    <a class="btn btn-link" href="{% url 'books' %}">Книги</a>
+  </div>
+
+  {% if book_list %}
+    {% for book in book_list %}
+      <div class="column col-12"><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></div>
+    {% endfor %}
+  {% else %}
+    <p>Каталог книг пуст.</p>
+  {% endif %}
+
+  <!--  Авторы  -->
+  <div class="column col-12 bg-secondary">
+    <a class="btn btn-link" href="{% url 'authors' %}">Авторы</a>
+  </div>
+
+  {% if author_list %}
+    {% for author in author_list %}
+      <div class="column col-12"><a href="{{ author.get_absolute_url }}">{{ author.last_name }}, {{ author.first_name }}</a></div>
+    {% endfor %}
+  {% else %}
+    <p>Список авторов пуст.</p>
+  {% endif %}
+
+</div>
+{% endblock %}

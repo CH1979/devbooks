@@ -35,7 +35,14 @@
             <a class="btn btn-link text-light" href="{% url 'index' %}">Главная</a>
             <a class="btn btn-link text-light" href="{% url 'books' %}">Книги</a>
             <a class="btn btn-link text-light" href="{% url 'authors' %}">Авторы</a>
-          </ul>
+        </section>
+        <section class="navbar-section">
+          <form class="form-group" method="get" action="{% url 'search' %}">
+            <div class="input-group">
+              <input class="form-input" type="text" value="{{q}}" name="q" placeholder="...">
+              <input class="btn" type="submit" value="Найти">
+            </div>
+          </form>
         </section>
       </nav>
       {% endblock %}

@@ -7,26 +7,31 @@ urlpatterns = [
     path(
         '',
         views.index,
-        name='index'
+        name='index',
+    ),
+    path(
+        'search',
+        views.search,
+        name='search',
     ),
     path(
         'books',
         views.BookListView.as_view(),
-        name='books'
+        name='books',
     ),
     path(
         'book/<int:pk>',
         views.BookDetailView.as_view(),
-        name='book-detail'
+        name='book-detail',
     ),
     path(
         'authors',
         views.AuthorListView.as_view(),
-        name='authors'
+        name='authors',
     ),
     path(
         'author/<int:pk>',
         views.AuthorDetailView.as_view(),
-        name='author-detail'
+        name='author-detail',
     ),
 ]
