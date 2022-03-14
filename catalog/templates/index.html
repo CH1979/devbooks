@@ -3,12 +3,12 @@
 
 {% block content %}
 <div class="columns">
+  <div class="column col-12 bg-secondary">
+    <a class="btn btn-link" href="{% url 'books' %}">Книги</a>
+  </div>
+
   <!-- Книги -->
   {% if book_list %}
-    <div class="column col-12 bg-secondary">
-      <a class="btn btn-link" href="{% url 'books' %}">Книги</a>
-    </div>
-
     {% for book in book_list %}
       {% include "catalog/include/book_card.html" %}
     {% endfor %}
