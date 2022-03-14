@@ -82,6 +82,7 @@ class Book(models.Model):
         Tag,
         blank=True,
         help_text='Выберите теги для этой книги',
+        related_name='book',
         verbose_name='тег',
     )
     language = models.ForeignKey(
