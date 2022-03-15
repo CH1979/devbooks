@@ -1,17 +1,20 @@
 <!-- Pagination -->
+{% load paginator_tags %}
+
 <div class="pagination">
   <span class="step-links">
     {% for page_num in book_list.paginator.page_range %}
       {% if page_num == book_list.number %}
       <span class="page-item active">
-        <a href="?page={{ page_num }}">{{ page_num }}</a>
+        <a href="?{% param_replace page=page_num %}">{{ page_num }}</a>
       </span>
       {% else %}
       <span class="page-item">
-        <a href="?page={{ page_num }}">{{ page_num }}</a>
+        <a href="?{% param_replace page=page_num %}">{{ page_num }}</a>
       </span>
       {% endif %}
     {% endfor %}
   </span>
 </div>
+
 <!--              -->
