@@ -1,4 +1,4 @@
 django==3.2
 django-cleanup
 pillow
-psycopg2
+mysqlclient

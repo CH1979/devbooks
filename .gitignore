@@ -110,3 +110,6 @@ media/
 *.pyc
 *.db
 *.pid
+
+fixtures/
+staticfiles/
