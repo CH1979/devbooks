@@ -1,81 +1,81 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-  {% block title %}<title>Python Library - Библиотека Питониста</title>{% endblock %}
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'css/spectre.min.css' %}">
-  <link rel="stylesheet" href="{% static 'css/spectre-exp.min.css' %}">
-  <link rel="stylesheet" href="{% static 'css/spectre-icons.min.css' %}">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block title %}
+    <title>DevBooks Library - Библиотека Питониста</title>{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> {% load static %}
 
-  <!---   Favicon  -->
-  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
-  <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
-  <link rel="mask-icon" href="{% static 'favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
-  <!--   -->
+    <!---   Favicon  -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!--   -->
 
-  <!--  Yandex Webmaster  -->
-  <meta name="yandex-verification" content="d1ca5a69700cbd45" />
-  <!--  -->
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/bootstrap/bootstrap.min.css' %}" type="text/css" media="screen" rel="stylesheet">
 
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript" >
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    <!-- Material Design Icons -->
+    <link href="{% static 'css/material_design/style.css' %}" type="text/css" media="screen" rel="stylesheet">
 
-    ym(89121276, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true
-    });
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/89121276" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
+    <!--  Yandex Webmaster  -->
+
+    <!--  -->
+
+    <!-- Yandex.Metrika counter -->
+    <!-- /Yandex.Metrika counter -->
 
 </head>
-<body>
-  <div class="container grid-xl">
-    <!-- Header -->
-    <header class="columns bg-primary">
-      {% block header %}
-      <nav class="navbar column col-12">
-        <section class="navbar-section">
-          <a class="navbar-brand text-light" href="{% url 'index' %}">
-            <b>Python Library</b>
-          </a>
-        </section>
-        <section class="navbar-section">
-            <a class="btn btn-link text-light" href="{% url 'index' %}">Главная</a>
-            <a class="btn btn-link text-light" href="{% url 'books' %}">Книги</a>
-            <a class="btn btn-link text-light" href="{% url 'authors' %}">Авторы</a>
-        </section>
-        <section class="navbar-section">
-          <form class="form-group" method="get" action="{% url 'search' %}">
-            <div class="input-group">
-              <input class="form-input" type="text" value="{{q}}" name="q" placeholder="...">
-              <input class="btn" type="submit" value="Найти">
-            </div>
-          </form>
-        </section>
-      </nav>
-      {% endblock %}
-    </header>
-    <!--   -->
 
-    <!-- Main -->
-    <main class="columns">
-      <div class="column col-12">
-      {% block content %}{% endblock %}
-      </div>
-    </main>
-    <!--   -->
-  </div>
+<body>
+    <div class="container grid-xl">
+        <!-- Header -->
+        <header class="columns bg-primary">
+            {% block header %}
+            <nav class="navbar column col-12">
+                <section class="navbar-section">
+                    <a class="navbar-brand text-light" href="{% url 'index' %}">
+                        <b>DevBooks Library</b>
+                    </a>
+                </section>
+                <section class="navbar-section">
+                    <a class="btn btn-link text-light" href="{% url 'index' %}">Главная</a>
+                    <a class="btn btn-link text-light" href="{% url 'books' %}">Книги</a>
+                    <a class="btn btn-link text-light" href="{% url 'authors' %}">Авторы</a>
+                </section>
+                <section class="navbar-section">
+                    <form class="form-group" method="get" action="{% url 'search' %}">
+                        <div class="input-group">
+                            <input class="form-input" type="text" value="{{q}}" name="q" placeholder="...">
+                            <input class="btn" type="submit" value="Найти">
+                        </div>
+                    </form>
+                </section>
+            </nav>
+            {% endblock %}
+        </header>
+        <!--   -->
+
+        <!-- Main -->
+        <main class="columns">
+            <div class="column col-12">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+        <!--   -->
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+
+
+    {% block scripts %}{% endblock %}
+
 </body>
+
 </html>
