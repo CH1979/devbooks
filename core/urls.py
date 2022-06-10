@@ -1,4 +1,4 @@
-"""pythonlibrary URL Configuration
+"""Devbooks URL Configuration
 
 """
 from django.conf import settings
