@@ -112,6 +112,7 @@ class Book(models.Model):
     class Meta:
         verbose_name = 'книга'
         verbose_name_plural = 'книги'
+        ordering = ['-year']
 
     def __str__(self):
         """Строковое представление модели"""
