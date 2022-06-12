@@ -2,35 +2,46 @@
 {% load static %}
 
 {% block content %}
-<div class="columns">
-  <div class="column col-12 bg-secondary">
-    <a class="btn btn-link" href="{% url 'books' %}">Книги</a>
-  </div>
+    <!-- Книги -->
+    <div class="row border-bottom mb-3">
+        <div class="col">
+            <h3>
+                <a class="text-decoration-none text-muted" href="{% url 'books' %}">
+                    Книги
+                </a>
+            </h3>
+        </div>
+    </div>
 
-  <!-- Книги -->
-  {% if book_list %}
-    {% for book in book_list %}
-      {% include "catalog/include/book_card.html" %}
-    {% endfor %}
+    <div class="row row-cols-xl-6 row-cols-lg-5 row-cols-md-4 row-cols-sm-1">
+        {% for book in book_list %}
+            {% include "catalog/include/book_card.html" %}
+        {% empty %}
+            <p>Каталог книг пуст.</p>
+        {% endfor %}
+    </div>
 
-  {% else %}
-    <p>Каталог книг пуст.</p>
-  {% endif %}
+    <!--  Авторы  -->
+    <div class="row border-bottom my-3">
+        <div class="col">
+            <h3>
+                <a class="text-decoration-none text-muted" href="{% url 'authors' %}">
+                    Авторы
+                </a>
+            </h3>
+        </div>
+    </div>
 
-  <!--  Авторы  -->
-  <div class="column col-12 bg-secondary">
-    <a class="btn btn-link" href="{% url 'authors' %}">Авторы</a>
-  </div>
-
-  {% if author_list %}
-  {% for author in author_list %}
-  <div class="column col-2 col-lg-4 col-md-6">
-    <a href="{{ author.get_absolute_url }}">{{ author.last_name }}, {{ author.first_name }}</a>
-  </div>
-  {% endfor %}
-  {% else %}
-    <p>Список авторов пуст.</p>
-  {% endif %}
-
-</div>
+    <div class="author-list">
+        {% for author in author_list %}
+            <a class="text-muted text-nowrap" href="{{ author.get_absolute_url }}">
+                {{ author.last_name }}, {{ author.first_name }}<br>
+            </a>
+        {% empty %}
+            <p>Список авторов пуст.</p>
+        {% endfor %}
+        <a class="text-muted" href="{% url 'authors' %}">
+            ...
+        </a>
+    </div>
 {% endblock %}

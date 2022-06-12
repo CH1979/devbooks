@@ -1,20 +1,25 @@
 <!-- Pagination -->
 {% load paginator_tags %}
 
-<div class="pagination">
-  <span class="step-links">
-    {% for page_num in book_list.paginator.page_range %}
-      {% if page_num == book_list.number %}
-      <span class="page-item active">
-        <a href="?{% param_replace page=page_num %}">{{ page_num }}</a>
-      </span>
-      {% else %}
-      <span class="page-item">
-        <a href="?{% param_replace page=page_num %}">{{ page_num }}</a>
-      </span>
-      {% endif %}
-    {% endfor %}
-  </span>
+<div class="row">
+    <div class="col">
+        <ul class="pagination">
+            {% for page_num in book_list.paginator.page_range %}
+                {% if page_num == book_list.number %}
+                    <li class="page-item">
+                        <a href="?{% param_replace page=page_num %}" class="page-link text-bg-secondary">
+                            {{ page_num }}
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a href="?{% param_replace page=page_num %}" class="page-link text-dark">
+                            {{ page_num }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
 </div>
-
-<!--              -->
+<!-- /Pagination -->

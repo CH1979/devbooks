@@ -10,7 +10,7 @@ from .models import Author, Book, Tag
 def index(request):
     """Представление для главной страницы"""
     book_list = Book.objects.all()[:6]
-    author_list = Author.objects.order_by('last_name').all()
+    author_list = Author.objects.order_by('last_name').all()[:20]
     context = {
         'book_list': book_list,
         'author_list': author_list
@@ -59,7 +59,7 @@ class BookListView(generic.TemplateView):
                 raise Http404
         context['book_list'] = queryset
 
-        paginator = Paginator(queryset, 18)
+        paginator = Paginator(queryset, 15)
         context['book_list'] = paginator.get_page(page_number)
 
         year_list = Book.objects.values_list('year', flat=True)

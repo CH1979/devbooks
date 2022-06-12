@@ -1,24 +1,26 @@
 {% load static %}
 
-<div class="column col-2 col-xl-3 col-lg-4 col-md-6 col-sm-12">
-  <a href="{{ book.get_absolute_url }}">
-    <div>
-      {% if book.cover %}
-      <img src="{{ book.cover.url }}" alt="{{ book.title }}">
-      {% else %}
-      <img src="{% static 'image/no_image.png' %}" alt="{{ book.title }}">
-      {% endif %}
+<div class="col d-flex align-items-stretch justify-content-center mb-2">
+    <div class="card col px-2">
+        <a class="text-decoration-none" href="{{ book.get_absolute_url }}">
+            <div class="text-center">
+                {% if book.cover %}
+                    <img src="{{ book.cover.url }}" alt="{{ book.title }}" height="200">
+                {% else %}
+                    <img src="{% static 'image/no_image.png' %}" alt="{{ book.title }}" height="200">
+                {% endif %}
+            </div>
+            <p class="card-title text-dark">
+                {{ book.title }}
+            </p>
+        </a>
+        {% for author in book.author.all %}
+            <p class="text-black-50 mb-0">
+                {{ author.first_name }} {{ author.last_name }}
+            </p>
+        {% endfor %}
+        <p class="text-black-50 mb-0">
+            {{ book.year }}
+        </p>
     </div>
-    <div>
-      {{ book.title }}
-    </div>
-  </a>
-  {% for author in book.author.all %}
-  <div>
-    {{ author.first_name }} {{ author.last_name }}
-  </div>
-  {% endfor %}
-  <div>
-  {{ book.year }}
-  </div>
 </div>
